@@ -4,6 +4,7 @@ using Herteg_Alina_Laboratorul2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Herteg_Alina_Laboratorul2.Migrations
 {
     [DbContext(typeof(Herteg_Alina_Laboratorul2Context))]
-    partial class Herteg_Alina_Laboratorul2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221103083053_BookCategory")]
+    partial class BookCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

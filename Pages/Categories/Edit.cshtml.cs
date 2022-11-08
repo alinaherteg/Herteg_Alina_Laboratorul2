@@ -9,10 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Herteg_Alina_Laboratorul2.Data;
 using Herteg_Alina_Laboratorul2.Models;
 
-
-namespace Herteg_Alina_Laboratorul2.Pages.Books
+namespace Herteg_Alina_Laboratorul2.Pages.Categories
 {
-    public class EditModel : BookCategoriesPageModel
+    public class EditModel : PageModel
     {
         private readonly Herteg_Alina_Laboratorul2.Data.Herteg_Alina_Laboratorul2Context _context;
 
@@ -22,29 +21,21 @@ namespace Herteg_Alina_Laboratorul2.Pages.Books
         }
 
         [BindProperty]
-        public Book Book { get; set; } = default!;
+        public Category Category { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Book == null)
-            {
-                return NotFound();
-            }
-            Book = await _context.Book
-.Include(b => b.Publisher)
-.Include(b => b.BookCategories).ThenInclude(b => b.Category)
-.AsNoTracking()
-.FirstOrDefaultAsync(m => m.ID == id);
-            var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
-            if (book == null)
+            if (id == null || _context.Category == null)
             {
                 return NotFound();
             }
 
-            PopulateAssignedCategoryData(_context, Book);
-            Book = book;
-            ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID",
-"PublisherName");
+            var category =  await _context.Category.FirstOrDefaultAsync(m => m.ID == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            Category = category;
             return Page();
         }
 
@@ -57,7 +48,7 @@ namespace Herteg_Alina_Laboratorul2.Pages.Books
                 return Page();
             }
 
-            _context.Attach(Book).State = EntityState.Modified;
+            _context.Attach(Category).State = EntityState.Modified;
 
             try
             {
@@ -65,7 +56,7 @@ namespace Herteg_Alina_Laboratorul2.Pages.Books
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BookExists(Book.ID))
+                if (!CategoryExists(Category.ID))
                 {
                     return NotFound();
                 }
@@ -78,10 +69,9 @@ namespace Herteg_Alina_Laboratorul2.Pages.Books
             return RedirectToPage("./Index");
         }
 
-        private bool BookExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.Book.Any(e => e.ID == id);
+          return _context.Category.Any(e => e.ID == id);
         }
     }
 }
-

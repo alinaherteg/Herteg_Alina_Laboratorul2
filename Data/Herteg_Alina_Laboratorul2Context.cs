@@ -17,5 +17,9 @@ namespace Herteg_Alina_Laboratorul2.Data
         public DbSet<Herteg_Alina_Laboratorul2.Models.Book> Book { get; set; } = default!;
 
         public DbSet<Herteg_Alina_Laboratorul2.Models.Publisher> Publisher { get; set; }
+
+        public DbSet<Herteg_Alina_Laboratorul2.Models.Category> Category { get; set; }
+
+        public DbSet<Herteg_Alina_Laboratorul2.Models.Author> Author { get; set; }
     }
 }
