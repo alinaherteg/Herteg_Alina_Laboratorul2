@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Herteg_Alina_Laboratorul2.Pages.Publishers;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Policy;
@@ -12,7 +13,6 @@ namespace Herteg_Alina_Laboratorul2.Models
 
         [Display(Name = "Book Title")]
         public string Title { get; set; }
-
 
         [Column(TypeName = "decimal(6, 2)")]
         public decimal Price { get; set; }

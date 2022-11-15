@@ -26,17 +26,17 @@ namespace Herteg_Alina_Laboratorul2.Pages.Books
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Book == null)
+            if (id == null )
             {
                 return NotFound();
             }
 
 
-            Book = await _context.Book
-.Include(b => b.Publisher)
-.Include(b => b.BookCategories).ThenInclude(b => b.Category)
-.AsNoTracking()
-.FirstOrDefaultAsync(m => m.ID == id);
+            Book = await _context.Book.Include(b => b.Publisher)
+                                      .Include(b=>b.Author)
+                                      .Include(b => b.BookCategories).ThenInclude(b => b.Category)
+                                      .AsNoTracking()
+                                      .FirstOrDefaultAsync(m => m.ID == id);
             var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
             if (book == null)
             {
@@ -44,9 +44,14 @@ namespace Herteg_Alina_Laboratorul2.Pages.Books
             }
 
             PopulateAssignedCategoryData(_context, Book);
-            Book = book;
-            ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID",
-"PublisherName");
+            var authorList = _context.Author.Select(x => new
+            {
+                x.ID,
+                FullName = x.LastName + " " + x.FirstName
+
+            });
+            ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID","PublisherName");
+            ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "ID", "FullName");
             return Page();
         }
 
