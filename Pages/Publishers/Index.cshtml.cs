@@ -25,6 +25,10 @@ namespace Herteg_Alina_Laboratorul2.Pages.Publishers
         public PublisherIndexData PublisherData { get; set; }
         public int PublisherID { get; set; }
         public int BookID { get; set; }
+
+        public int CategoryId { get; set; }
+        public string TitleSort { get; set; }
+        public string AuthorSort { get; set; }
         public async Task OnGetAsync(int? id, int? bookID)
         {
             PublisherData = new PublisherIndexData();

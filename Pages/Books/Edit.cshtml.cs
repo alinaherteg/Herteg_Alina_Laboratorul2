@@ -30,6 +30,8 @@ namespace Herteg_Alina_Laboratorul2.Pages.Books
             {
                 return NotFound();
             }
+
+
             Book = await _context.Book
 .Include(b => b.Publisher)
 .Include(b => b.BookCategories).ThenInclude(b => b.Category)
