@@ -13,9 +13,6 @@ builder.Services.AddDbContext<LibraryIdentityContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Herteg_Alina_Laboratorul2Context") ?? throw new InvalidOperationException("Connectionstring 'Herteg_Alina_Laboratorul2Context' not found.")));
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 .AddEntityFrameworkStores<LibraryIdentityContext>();
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<LibraryIdentityContext>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
