@@ -1,5 +1,5 @@
 ﻿@page 
-@model Herteg_Alina_Laboratorul2.Pages.IndexModel
+@model Herteg_Alina_Laboratorul2.Pages.Borrowings.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -19,6 +19,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Borrowing[0].Book)
             </th>
+      
             <th>
                 @Html.DisplayNameFor(model => model.Borrowing[0].ReturnDate)
             </th>
@@ -34,6 +35,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Book.ID)
             </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.ReturnDate)
             </td>

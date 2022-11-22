@@ -28,5 +28,6 @@ namespace Herteg_Alina_Laboratorul2.Models
         public Author? Author { get; set; }
 
         public ICollection<BookCategory>? BookCategories { get; set; }
+        public Borrowing? Borrowing { get; set; }
     } 
 }

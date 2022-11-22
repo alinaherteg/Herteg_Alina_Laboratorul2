@@ -20,8 +20,7 @@
                 @Html.DisplayNameFor(model => model.Borrowing[0].Book)
             </th>
             <th>
-                @Html.DisplayNameFor(model =>
-model.Borrowing[0].Book.Author)
+                @Html.DisplayNameFor(model => model.Borrowing[0].Book.Author)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Borrowing[0].ReturnDate)
@@ -36,10 +35,10 @@ model.Borrowing[0].Book.Author)
                 @Html.DisplayFor(modelItem => item.Member.FullName)
             </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Book.Title)
+                    @Html.DisplayFor(modelItem => item.Book.Borrowing.Book.Title)
                 </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Book.Author.FullName)
+                @Html.DisplayFor(modelItem => item.Book.Borrowing.Book.Author.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ReturnDate)
