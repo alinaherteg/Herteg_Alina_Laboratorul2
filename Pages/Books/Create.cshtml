@@ -43,12 +43,31 @@ danger"></span>
                 <span asp-validation-for="Book.PublisherID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Book.BookCategories" class="control-label">Book Categories</label>
-                <select asp-for="Book.BookCategories" class="form-control" />
-                <select asp-for="Book.BookCategories" class="form-control"/>
-                <span asp-validation-for="Book.BookCategories" class="text-danger"></span>
-
-            </div>
+                <div class="table">
+                <table>
+<tr>
+@{
+int cnt = 0;
+foreach (var cat in Model.AssignedCategoryDataList)
+{
+if (cnt++ % 3 == 0)
+{
+@:</tr><tr>
+}
+@:<td>
+<input type="checkbox"
+name="selectedCategories"
+value="@cat.CategoryID"
+@(Html.Raw(cat.Assigned ?
+"checked=\"checked\"" : "")) />
+@cat.CategoryID @: @cat.Name
+@:</td>
+}
+@:</tr>
+}
+</table>
+</div>
+</div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

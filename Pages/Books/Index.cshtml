@@ -8,8 +8,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a><a href="f:\fsega\medii de programare\herteg_alina_laboratorul2\pages\books\delete.cshtml.cs">f:\fsega\medii de programare\herteg_alina_laboratorul2\pages\books\delete.cshtml.cs</a>
-    <a href="f:\fsega\medii de programare\herteg_alina_laboratorul2\pages\books\delete.cshtml">f:\fsega\medii de programare\herteg_alina_laboratorul2\pages\books\delete.cshtml</a>
+    <a asp-page="Create">Create New</a>
 </p>
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
@@ -58,6 +57,7 @@
                 selectedRow = "table-success";
             }
             <tr class="@selectedRow">
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
@@ -67,6 +67,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.PublishingDate)
                 </td>
@@ -80,7 +81,7 @@
                     @{
                         foreach (var category in item.BookCategories)
                         {
-                            @category.Category.ID @: @category.Category.CategoryName <br />
+                            @category.Category.CategoryName <br />
                         }
                     }
                 </td>

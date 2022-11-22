@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Herteg_Alina_Laboratorul2.Data;
 using Herteg_Alina_Laboratorul2.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Herteg_Alina_Laboratorul2.Pages.Books
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly Herteg_Alina_Laboratorul2.Data.Herteg_Alina_Laboratorul2Context _context;
